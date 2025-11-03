@@ -188,6 +188,93 @@
       </div>
     </section>
 
+    <section id="gallery">
+  <div class="grid">
+    <article class="card two">
+      <h3>Power BI Portfolio Gallery</h3>
+      <p>Selected Power BI dashboards and visual analytics created to track AR metrics, DSO, and cash flow insights.</p>
+      <div class="carousel" id="bi-gallery">
+        <img src="bi1.png" class="slide active" alt="Power BI Dashboard 1">
+        <img src="bi2.png" class="slide" alt="Power BI Dashboard 2">
+        <img src="bi3.png" class="slide" alt="Power BI Dashboard 3">
+        <button class="prev" aria-label="Previous image">&#10094;</button>
+        <button class="next" aria-label="Next image">&#10095;</button>
+      </div>
+    </article>
+
+    <article class="card two">
+      <h3>Tableau Portfolio Gallery</h3>
+      <p>Interactive Tableau dashboards designed to visualize financial and operational KPIs with dynamic filters and storyboards.</p>
+      <div class="carousel" id="tb-gallery">
+        <img src="tb1.png" class="slide active" alt="Tableau Dashboard 1">
+        <img src="tb2.png" class="slide" alt="Tableau Dashboard 2">
+        <button class="prev" aria-label="Previous image">&#10094;</button>
+        <button class="next" aria-label="Next image">&#10095;</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-top: 12px;
+  background: var(--surface);
+  border: 1px solid var(--outline);
+}
+.carousel img {
+  width: 100%;
+  display: none;
+  border-radius: 16px;
+  transition: opacity 0.3s ease;
+}
+.carousel img.active {
+  display: block;
+}
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(29, 78, 216, 0.4);
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+.carousel button:hover {
+  background: rgba(29, 78, 216, 0.7);
+}
+.carousel .prev {
+  left: 10px;
+}
+.carousel .next {
+  right: 10px;
+}
+</style>
+
+<script>
+function initCarousel(id) {
+  const gallery = document.querySelector(`#${id}`);
+  const slides = gallery.querySelectorAll('.slide');
+  const next = gallery.querySelector('.next');
+  const prev = gallery.querySelector('.prev');
+  let i = 0;
+  function show(n) {
+    slides.forEach(s => s.classList.remove('active'));
+    slides[n].classList.add('active');
+  }
+  next.onclick = () => { i = (i + 1) % slides.length; show(i); };
+  prev.onclick = () => { i = (i - 1 + slides.length) % slides.length; show(i); };
+}
+initCarousel('bi-gallery');
+initCarousel('tb-gallery');
+</script>
+    
     <section id="resume">
       <div class="grid">
         <article class="card">
